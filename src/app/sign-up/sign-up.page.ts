@@ -22,7 +22,7 @@ export class SignUpPage implements OnInit {
   }
 
   async Signup(){
-    const user = await this.authService.registerUser(this.ionicForm.value.email,this.ionicForm.value.password ).catch((error)=>{
+    const user = await this.authService.registerUser(this.ionicForm.value.email,this.ionicForm.value.password, this.ionicForm.value.fullname ).catch((error)=>{
       console.log(error);
     })
     if(user){
