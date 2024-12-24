@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ConsapiService } from '../consapi.service';
+import { Movies } from 'src/Models/Movis';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,19 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class HomePage {
+  allMoveis:any[]=[];
 
-  constructor() {}
-
+  constructor(public sv:ConsapiService) {
+  }
+  ngOnInit(): void {
+    this.getdata();
+  }
+ getdata(){
+  this.sv.getDetails().subscribe({
+    next:(data)=>{
+      this.allMoveis = data;
+    },
+    
+  })
+ }
 }
